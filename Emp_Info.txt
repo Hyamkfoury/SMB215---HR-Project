@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=windows-1252"%>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <title>Employees</title>
+    <link type="text/css" rel="stylesheet" href="jdeveloper.css"/>
+  </head>
+  <body>
+    <h2 align="center">
+      HR Application
+    </h2><h3>
+      Employees Data
+    </h3>
+    <p>
+       
+      <jsp:useBean id="empsbean" class="hr.DataHandler" scope="session"/>
+       
+    </p>
+    <p>
+      <%java.sql.ResultSet rset;
+rset = empsbean.getAllEmployees();%>
+    </p>
+    <p>
+      &nbsp;
+    </p>
+    
+    <table cellspacing="2" cellpadding="3" border="1" width="100%">
+  <tr>
+    <td width="17%">First Name</td>
+    <td width="17%">Last Name</td>
+    <td width="17%">Email</td>
+    <td width="17%">Job</td>
+    <td width="16%">Phone</td>
+    <td width="16%">Salary</td>
+  </tr>
+   <%while (rset.next ())
+{
+out.println("<tr>");
+out.println("<td>" +
+rset.getString("first_name") + "</td><td>" +
+rset.getString("last_name") + "</td><td>" +
+rset.getString("email") + "</td><td>" +
+rset.getString("job_id") + "</td><td>" +
+rset.getString("phone_number") + "</td><td>" +
+rset.getString("salary") + " </tdl>");
+out.println("</tr>");
+}%>
+</table>
+   
+  </body>
+</html>
