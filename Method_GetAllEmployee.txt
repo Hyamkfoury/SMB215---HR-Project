@@ -1,0 +1,8 @@
+public ResultSet getAllEmployees() throws SQLException {
+        getDBConnection();
+        stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        query = "SELECT * FROM Employees ORDER BY employee_id"; 
+        System.out.println("\nExecuting query:" + query);
+        rset = stmt.executeQuery(query);
+        return rset;   
+    }

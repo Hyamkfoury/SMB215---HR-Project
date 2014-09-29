@@ -1,0 +1,10 @@
+public ResultSet getAllEmployeesByName(String name) throws SQLException {
+        name = name.toUpperCase();
+        getDBConnection();
+        stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        query = "SELECT * FROM Employees WHERE UPPER(first_name) like \'%" + name + "%\'" + 
+        "OR UPPER(lasst_name) like \'%" + name + "%\' +  ORDER BY employee_id";
+        System.out.println("\nExecuting query:" + query);
+        rset = stmt.executeQuery(query);
+        return rset;   
+    } 
