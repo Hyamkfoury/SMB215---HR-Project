@@ -1,0 +1,66 @@
+public String updateEmployee(int employee_id, String first_name,
+    String last_name, String email,
+    String phone_number, String salary,
+    String job_id) throws SQLException {
+    Employee oldEmployee = findEmployeeById(employee_id);
+    getDBConnection();
+    stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+    ResultSet.CONCUR_READ_ONLY);
+    StringBuffer columns = new StringBuffer( 255 );
+    if ( first_name != null &&
+    !first_name.equals( oldEmployee.getFirstName() ) )
+    {
+    columns.append( "first_name = '" + first_name + "'" );
+    }
+    if ( last_name != null &&
+    !last_name.equals( oldEmployee.getLastName() ) ) {
+    if ( columns.length() > 0 ) {
+    columns.append( ", " );
+    }
+    columns.append( "last_name = '" + last_name + "'" );
+    }
+    if ( email != null &&
+    !email.equals( oldEmployee.getEmail() ) ) {
+    if ( columns.length() > 0 ) {
+    columns.append( ", " );
+    }
+    columns.append( "email = '" + email + "'" );
+    }
+    if ( phone_number != null &&
+    !phone_number.equals( oldEmployee.getPhoneNumber() ) ) {
+    if ( columns.length() > 0 ) {
+    columns.append( ", " );
+    }
+    columns.append( "phone_number = '" + phone_number + "'" );
+    }
+    if ( salary != null &&
+    !salary.equals( oldEmployee.getSalary().toString() ) ) {
+    if ( columns.length() > 0 ) {
+    columns.append( ", " );
+    }
+    columns.append( "salary = '" + salary + "'" );
+    }
+    if ( job_id != null &&
+    !job_id.equals( oldEmployee.getJobId() ) ) {
+    if ( columns.length() > 0 ) {
+    columns.append( ", " );
+    }
+    columns.append( "job_id = '" + job_id + "'" );
+    }
+    if ( columns.length() > 0 )
+    {
+    sqlString =
+    "UPDATE Employees SET " + columns.toString() +
+    " WHERE employee_id = " + employee_id;
+    System.out.println("\nExecuting: " + sqlString);
+    stmt.execute(sqlString);
+    }
+    else
+    {
+    System.out.println( "Nothing to do to update Employee Id: " +
+    employee_id);
+    }
+    return "success";
+    }
+       
+}
