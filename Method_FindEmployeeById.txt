@@ -1,0 +1,23 @@
+    public Employee findEmployeeById(int id) throws SQLException {
+
+    Employee selectedEmp = new Employee();
+    getDBConnection();
+    stmt =
+    conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+    ResultSet.CONCUR_READ_ONLY);
+    query = "SELECT * FROM Employees WHERE employee_id = " + id;
+    System.out.println("\nExecuting: " + query);
+    rset = stmt.executeQuery(query);
+    while (rset.next()) {
+    selectedEmp.setEmployeeId(new Integer(rset.getInt("employee_id")));
+    selectedEmp.setFirstName(rset.getString("first_name"));
+    selectedEmp.setLastName(rset.getString("last_name"));
+    selectedEmp.setEmail(rset.getString("email"));
+    selectedEmp.setPhoneNumber(rset.getString("phone_number"));
+    selectedEmp.setHireDate(rset.getDate("hire_date"));
+    selectedEmp.setSalary(new Double(rset.getDouble("salary")));
+    selectedEmp.setJobId(new Integer( rset.getInt("job_id")));
+    }
+    return selectedEmp;
+    } }
+    
