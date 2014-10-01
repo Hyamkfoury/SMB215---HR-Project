@@ -65,6 +65,8 @@ public class DataHandler {
     selectedEmp.setHireDate(rset.getDate("hire_date"));
     selectedEmp.setSalary(new Double(rset.getDouble("salary")));
     selectedEmp.setJobId(new Integer( rset.getInt("job_id")));
+    selectedEmp.setCommissionPct(new Double(rset.getDouble("commissionPct"))); 
+    selectedEmp.setDepartmentId(new Integer(rset.getInt("department_id")));    
     }
     return selectedEmp;
     }
@@ -134,5 +136,25 @@ public class DataHandler {
     }
     return "success";
     }
+   
+    public String addEmployee(String first_name,
+    String last_name, String email,
+    String phone_number, String job_id, int salary) throws SQLException {
+    
+    getDBConnection();
+    stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+    ResultSet.CONCUR_READ_ONLY);
+    sqlString = "INSERT INTO Employees VALUES (EMPLOYEES_SEQ.nextval, '" +
+    first_name + "','" +
+    last_name + "','" +
+    email + "','" +
+    phone_number + "'," +
+    "SYSDATE, '" +
+    job_id + "', " +
+    salary + ",.30,100,80)";
+    System.out.println("\nInserting: " + sqlString);
+    stmt.execute(sqlString);
+        return "success";
+}
        
 }
