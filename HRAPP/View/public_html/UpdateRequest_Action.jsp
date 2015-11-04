@@ -20,7 +20,7 @@ String status = request.getParameter("status");
 
 empsbean.updateRequest(employee_id.intValue(), request_id.intValue(), type, from_date , to_date , note, status );%>
 
- <jsp:forward page="<%= \"Requests.jsp?empid=\" + employee_id.intValue() %>"/>
+ <jsp:forward page="<%= \"Request1.jsp?empid=\" + employee_id.intValue() %>"/>
   </body>
   
 </html>

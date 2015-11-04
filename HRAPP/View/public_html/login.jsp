@@ -20,10 +20,7 @@
       </tr><tr>
         <td width="50%">Password</td>
         <td width="50%"><input type="password" name="password"></td>
-      </tr><tr>
-        <td width="50%">Host</td>
-        <td width="50%"><input type="text" name="host"></td>
-      </tr>
+     
     </table>
     
       <input type="submit" value="Submit"/>

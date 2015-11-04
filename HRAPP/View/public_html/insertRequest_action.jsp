@@ -12,11 +12,13 @@
    <%
    Integer employee_id =new Integer( request.getParameter("employee_id"));
    String type = request.getParameter("request_type");
-String from_date =  request.getParameter("from_date");
-String to_date = request.getParameter("to_date");
+String from_date =  request.getParameter("From_Date");
+String to_date = request.getParameter("To_Date");
 String note = request.getParameter("note");
 empsbean.addRequest(type, employee_id.intValue(), from_date, to_date, note, "new");
-    out.println("<jsp:forward page = requests.jsp?empid=" + employee_id.intValue() + "/>");
+   
     %>
+    
+     <jsp:forward page = "<%= \"Request1.jsp?empid=\" + employee_id.intValue() %>"/>
   </body>
 </html>

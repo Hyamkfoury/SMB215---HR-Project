@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns2="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname namespaceURI="http://ws.cdyne.com/WeatherWS/"
+                     localpart="Weather"/>
+      <port-info>
+         <wsdl-port namespaceURI="http://ws.cdyne.com/WeatherWS/"
+                    localpart="WeatherSoap12"/>
+         <runtime/>
+         <operations>
+            <operation name="getWeatherInformation"/>
+            <operation name="getCityForecastByZIP"/>
+            <operation name="getCityWeatherByZIP"/>
+         </operations>
+      </port-info>
+      <port-info>
+         <wsdl-port namespaceURI="http://ws.cdyne.com/WeatherWS/"
+                    localpart="WeatherSoap"/>
+         <runtime/>
+         <operations>
+            <operation name="getWeatherInformation"/>
+            <operation name="getCityForecastByZIP"/>
+            <operation name="getCityWeatherByZIP"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>

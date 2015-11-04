@@ -9,11 +9,11 @@
   <body><%@ page import="java.sql.ResultSet"%>
   <jsp:useBean id="empsbean" class="hr.DataHandler" scope="session"/>
 <%boolean userIsValid = false;
-String host = request.getParameter("host");
+
 String userid = request.getParameter("userid");
 String password = request.getParameter("password");
-String jdbcUrl = "jdbc:oracle:thin:@" + host + ":1521:XE";
-userIsValid = empsbean.authenticateUser(jdbcUrl, userid, password, session);%>
+
+userIsValid = empsbean.authenticateUser(userid, password, session);%>
 <%if (userIsValid){%><jsp:forward page="Employees.jsp"/><%}else%><jsp:forward page="login.jsp"/>%>
   </body>
 </html>

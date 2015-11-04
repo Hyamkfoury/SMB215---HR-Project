@@ -14,7 +14,8 @@ String email = request.getParameter("email");
 String phone_number = request.getParameter("phone_number");
 String job_id = request.getParameter("job_id");
 Integer salary = new Integer(request.getParameter("salary"));
-empsbean.addEmployee(first_name, last_name, email, phone_number, job_id, salary.intValue());%>
+String password = request.getParameter("password");
+empsbean.addEmployee(first_name, last_name, email, phone_number, job_id, salary.intValue(),password);%>
     <jsp:forward page="Employees.jsp"/>
   </body>
  

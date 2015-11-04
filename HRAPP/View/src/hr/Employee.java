@@ -81,7 +81,7 @@ return commissionPct;
 public void setDepartmentId(Integer departmentId) {
 this.departmentId = departmentId;
 }
-public Integer DepartmentId() {
+public Integer getDepartmentId() {
 return departmentId;
 }
 }
